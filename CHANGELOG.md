@@ -3,5 +3,5 @@ rbcgroup CHANGELOG
 
 0.0.1
 -----
-[malvarez]
+[malvads]
 - First code
