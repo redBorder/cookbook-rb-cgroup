@@ -1,4 +1,4 @@
-# cookbook-rb-aioutliers
+# cookbook-rb-cgroup
 
 cookbook to install and configure redborder cgroups
 
