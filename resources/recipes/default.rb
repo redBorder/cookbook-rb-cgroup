@@ -1,11 +1,11 @@
 #
-# Cookbook Name:: rbcgroup
+# Cookbook:: rbcgroup
 # Recipe:: default
 #
 # redborder
 #
 #
 
-rbcgroup_config "config" do
+rbcgroup_config 'config' do
   action :add
 end

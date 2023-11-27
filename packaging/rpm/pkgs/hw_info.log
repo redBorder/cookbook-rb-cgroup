@@ -13,7 +13,7 @@ CPU family:            6
 Model:                 60
 Model name:            Intel(R) Core(TM) i5-4690 CPU @ 3.50GHz
 Stepping:              3
-CPU MHz:               3822.357
+CPU MHz:               3862.518
 CPU max MHz:           3900.0000
 CPU min MHz:           800.0000
 BogoMIPS:              6983.88
@@ -28,8 +28,8 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 
 Memory:
               total        used        free      shared  buff/cache   available
-Mem:       16128780     5242352     1011256      961756     9875172     9588556
-Swap:       8191996      203520     7988476
+Mem:       16128780     5637680      566044     1000652     9925056     9153060
+Swap:       8191996      203264     7988732
 
 
 Storage:

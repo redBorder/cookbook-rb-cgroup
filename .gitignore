@@ -1,0 +1,12 @@
+.vargrant
+/cookbooks
+
+#Bundler
+bin/*
+.bundle/*
+
+.kitchen/
+.kitchen.local.yml
+
+packaging/rpm/SOURCES/*
+packaging/rpm/pkgs/*

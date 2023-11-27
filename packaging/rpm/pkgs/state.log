@@ -50,3 +50,55 @@
 2023-11-27 10:44:25,069 - Finish: build phase for cookbook-rb-cgroup-0.0.1-1.el9.rb.src.rpm
 2023-11-27 10:44:25,070 - Start: clean chroot
 2023-11-27 10:44:26,380 - Finish: clean chroot
+2023-11-27 10:46:51,564 - Mock Version: 2.17
+2023-11-27 10:46:53,718 - Start: dnf update
+2023-11-27 10:46:58,104 - Finish: dnf update
+2023-11-27 10:46:58,110 - Finish: chroot init
+2023-11-27 10:46:58,114 - Start: buildsrpm
+2023-11-27 10:46:58,120 - Start: rpmbuild -bs
+2023-11-27 10:46:58,228 - Finish: rpmbuild -bs
+2023-11-27 10:46:58,230 - Finish: buildsrpm
+2023-11-27 10:46:58,234 - Start: clean chroot
+2023-11-27 10:46:59,536 - Finish: clean chroot
+2023-11-27 10:46:59,537 - Finish: run
+2023-11-27 10:47:02,238 - Mock Version: 2.17
+2023-11-27 10:47:03,753 - Start: dnf update
+2023-11-27 10:47:07,750 - Finish: dnf update
+2023-11-27 10:47:07,757 - Finish: chroot init
+2023-11-27 10:47:07,759 - Start: build phase for cookbook-rb-cgroup-0.0.1-1.el9.rb.src.rpm
+2023-11-27 10:47:07,761 - Start: build setup for cookbook-rb-cgroup-0.0.1-1.el9.rb.src.rpm
+2023-11-27 10:47:10,486 - Finish: build setup for cookbook-rb-cgroup-0.0.1-1.el9.rb.src.rpm
+2023-11-27 10:47:10,487 - Start: Outputting list of installed packages
+2023-11-27 10:47:10,627 - Finish: Outputting list of installed packages
+2023-11-27 10:47:10,627 - Start: rpmbuild cookbook-rb-cgroup-0.0.1-1.el9.rb.src.rpm
+2023-11-27 10:47:10,981 - Finish: rpmbuild cookbook-rb-cgroup-0.0.1-1.el9.rb.src.rpm
+2023-11-27 10:47:10,988 - Finish: build phase for cookbook-rb-cgroup-0.0.1-1.el9.rb.src.rpm
+2023-11-27 10:47:10,992 - Start: clean chroot
+2023-11-27 10:47:12,368 - Finish: clean chroot
+2023-11-27 10:47:12,370 - Finish: run
+2023-11-27 14:39:40,352 - Mock Version: 2.17
+2023-11-27 14:39:42,022 - Start: dnf update
+2023-11-27 14:39:46,157 - Finish: dnf update
+2023-11-27 14:39:46,163 - Finish: chroot init
+2023-11-27 14:39:46,167 - Start: buildsrpm
+2023-11-27 14:39:46,171 - Start: rpmbuild -bs
+2023-11-27 14:39:46,291 - Finish: rpmbuild -bs
+2023-11-27 14:39:46,293 - Finish: buildsrpm
+2023-11-27 14:39:46,296 - Start: clean chroot
+2023-11-27 14:39:47,629 - Finish: clean chroot
+2023-11-27 14:39:47,630 - Finish: run
+2023-11-27 14:39:50,487 - Mock Version: 2.17
+2023-11-27 14:39:52,049 - Start: dnf update
+2023-11-27 14:39:56,671 - Finish: dnf update
+2023-11-27 14:39:56,677 - Finish: chroot init
+2023-11-27 14:39:56,679 - Start: build phase for cookbook-rb-cgroup-0.0.3-1.el9.rb.src.rpm
+2023-11-27 14:39:56,681 - Start: build setup for cookbook-rb-cgroup-0.0.3-1.el9.rb.src.rpm
+2023-11-27 14:39:59,142 - Finish: build setup for cookbook-rb-cgroup-0.0.3-1.el9.rb.src.rpm
+2023-11-27 14:39:59,143 - Start: Outputting list of installed packages
+2023-11-27 14:39:59,292 - Finish: Outputting list of installed packages
+2023-11-27 14:39:59,292 - Start: rpmbuild cookbook-rb-cgroup-0.0.3-1.el9.rb.src.rpm
+2023-11-27 14:39:59,931 - Finish: rpmbuild cookbook-rb-cgroup-0.0.3-1.el9.rb.src.rpm
+2023-11-27 14:39:59,937 - Finish: build phase for cookbook-rb-cgroup-0.0.3-1.el9.rb.src.rpm
+2023-11-27 14:39:59,941 - Start: clean chroot
+2023-11-27 14:40:01,505 - Finish: clean chroot
+2023-11-27 14:40:01,506 - Finish: run

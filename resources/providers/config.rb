@@ -1,4 +1,4 @@
-# Cookbook Name:: rbcgroup
+# Cookbook:: rbcgroup
 #
 # Provider:: config
 #
@@ -9,20 +9,19 @@ action :add do
       action :nothing
     end
 
-    template '/etc/cgroup.conf' do 
-      source 'cgroup.conf.erb' 
-      owner 'root' 
-      group 'root' 
+    template '/etc/cgroup.conf' do
+      source 'cgroup.conf.erb'
+      owner 'root'
+      group 'root'
       mode '0644'
       cookbook 'rbcgroup'
-      mode 0600
+      mode '600'
       retries 2
       notifies :run, 'execute[load_cgroups]', :delayed
-    end 
+    end
 
-    Chef::Log.info("cookbook redborder-cgroup has been processed.")
+    Chef::Log.info('cookbook redborder-cgroup has been processed.')
   rescue => e
     Chef::Log.error(e.message)
   end
 end
-
