@@ -1,6 +1,6 @@
 # cookbook-rb-aioutliers
 
-cookbook to install and configure redborder aioutliers
+cookbook to install and configure redborder cgroups
 
 ### Platforms
 
