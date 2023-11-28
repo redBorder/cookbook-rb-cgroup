@@ -5,5 +5,5 @@ unified_mode true
 # Resource:: config
 #
 
-actions :add, :remove
+actions :add
 default_action :add
