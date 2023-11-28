@@ -1,6 +1,6 @@
 unified_mode true
 
-# Cookbook:: :: rbaioutliers
+# Cookbook:: :: rbcgroup
 #
 # Resource:: config
 #
