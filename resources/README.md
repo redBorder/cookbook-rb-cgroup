@@ -1,6 +1,6 @@
 # cookbook-rb-cgroup
 
-cookbook to install and configure redborder cgroups
+cookbook to install and configure redborder cgroup
 
 ### Platforms
 
