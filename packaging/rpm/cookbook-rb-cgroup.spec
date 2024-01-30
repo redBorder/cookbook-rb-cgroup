@@ -35,7 +35,7 @@ case "$1" in
   ;;
   2)
     # This is an upgrade.
-    su - -s /bin/bash -c 'source /etc/profile && rvm gemset use default && env knife cookbook upload rbaioutliers'
+    su - -s /bin/bash -c 'source /etc/profile && rvm gemset use default && env knife cookbook upload rbcgroup'
   ;;
 esac
 
@@ -49,5 +49,7 @@ systemctl daemon-reload
 %doc
 
 %changelog
+* Tue Jan 30 2024 - Luis Blanco <ljblanco@redborder.com> - 0.0.1-2
+- Fixing cookbook to upgrade
 * Mon Sep 25 2023 - Miguel Álvarez <malvarez@redborder.com> - 0.0.1-1
 - Initial spec version
