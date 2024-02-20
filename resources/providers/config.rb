@@ -9,7 +9,7 @@ action :add do
       action :nothing
     end
 
-    dnf_package "redborder-cgroups" do
+    dnf_package 'redborder-cgroups' do
       action :upgrade
     end
 
