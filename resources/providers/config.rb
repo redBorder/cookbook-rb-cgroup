@@ -9,7 +9,10 @@ action :add do
       action :nothing
     end
 
-    # Only executed if template has been modified
+    dnf_package 'redborder-cgroups' do
+      action :upgrade
+    end
+
     template '/etc/cgroup.conf' do
       source 'cgroup.conf.erb'
       owner 'root'
