@@ -49,7 +49,7 @@ systemctl daemon-reload
 %doc
 
 %changelog
-* Wed Feb 21 2024 - Luis Blanco <ljblanco@redborder.com> 
+* Wed Feb 21 2024 - Luis Blanco <ljblanco@redborder.com> - 0.1.0-1
 - Upload rbcgroup cookbook not another weird
 * Mon Sep 25 2023 - Miguel Álvarez <malvarez@redborder.com> - 0.0.1-1
 - Initial spec version
