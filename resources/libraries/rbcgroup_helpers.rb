@@ -1,4 +1,4 @@
-module Rb_cgroup
+module RbCgroup
   module Helpers
   end
 end
