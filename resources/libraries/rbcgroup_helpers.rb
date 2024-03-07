@@ -1,4 +1,4 @@
-module Rbaioutliers
+module RbCgroup
   module Helpers
   end
 end
