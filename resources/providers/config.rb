@@ -2,6 +2,7 @@
 #
 # Provider:: config
 #
+require 'English'
 action :add do
   begin
     execute 'load_cgroups' do
@@ -30,7 +31,7 @@ action :add do
       block do
         # Run the check script and capture the exit status
         system('/usr/lib/redborder/scripts/rb_check_cgroups.rb')
-        exit_status = $?.exitstatus
+        exit_status = $CHILD_STATUS.exitstatus
 
         # Check if the exit status is 1; if true, run the configuration script
         if exit_status == 1
