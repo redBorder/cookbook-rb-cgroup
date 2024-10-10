@@ -1,6 +1,11 @@
 cookbook-rb-cgroup CHANGELOG
 ===============
 
+## 0.0.5
+
+  - Miguel Negrón
+    - [1d32b70] Add pre and postun to clean the cookbook
+
 ## 0.0.4
 
   - Miguel Alvarez
