@@ -5,6 +5,8 @@
 require 'English'
 action :add do
   begin
+    check_cgroups = new_resource.check_cgroups
+
     execute 'load_cgroups' do
       command '/usr/lib/redborder/bin/rb_configure_cgroups.sh'
       action :nothing
