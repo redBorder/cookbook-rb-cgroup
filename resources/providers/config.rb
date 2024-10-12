@@ -24,7 +24,7 @@ action :add do
       cookbook 'rbcgroup'
       mode '600'
       retries 2
-      notifies :run, 'execute[load_cgroups]', :delayed
+      notifies :run, 'execute[load_cgroups]', :delayed if check_cgroups
     end
 
     if check_cgroups
