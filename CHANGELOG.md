@@ -1,6 +1,16 @@
 cookbook-rb-cgroup CHANGELOG
 ===============
 
+## 1.0.0
+
+  - Miguel Negrón
+    - [98a2a95] Merge pull request #9 from redBorder/improvement/boost_installation_stage_1
+    - [98a2a95] Merge pull request #9 from redBorder/improvement/boost_installation_stage_1
+    - [52505ae] Fix missing variable
+    - [0364c87] Fix missing variable
+    - [ee490d0] Merge branch 'master' into improvement/dont_call_cgroup_check_during_installation
+    - [effb801] Make check_cgroups optional (true by default)
+
 ## 0.0.5
 
   - Miguel Negrón
