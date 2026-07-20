@@ -1,9 +1,7 @@
 # Cookbook:: rbcgroup
 # Provider:: config
-# ponytail: native systemd drop-in memory cgroup provider
 
 action :add do
-  # Main systemd root slice
   systemd_unit 'redborder.slice' do
     content(
       'Slice' => {
@@ -36,7 +34,6 @@ action :add do
         action :nothing
       end
 
-      # Memory cgroup drop-in override
       systemd_unit "#{unit_name}.service.d/10-cgroups.conf" do
         content(
           'Service' => {
