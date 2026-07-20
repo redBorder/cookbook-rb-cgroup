@@ -5,7 +5,7 @@ action :add do
   systemd_unit 'redborder.slice' do
     content(
       'Slice' => {
-        'Description' => 'redBorder Core Slice'
+        'Description' => 'redBorder Core Slice',
       }
     )
     action [:create, :enable]
@@ -39,7 +39,7 @@ action :add do
           'Service' => {
             'Slice' => "redborder-#{unit_name.delete('-')}.slice",
             'MemoryHigh' => "#{mem_kb}K",
-            'MemoryMax' => (data['max_limit'].to_i > 0) ? "#{data['max_limit']}K" : nil
+            'MemoryMax' => (data['max_limit'].to_i > 0) ? "#{data['max_limit']}K" : nil,
           }.compact
         )
         action :create
