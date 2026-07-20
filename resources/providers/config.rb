@@ -1,51 +1,67 @@
 # Cookbook:: rbcgroup
-#
 # Provider:: config
-#
-require 'English'
+# ponytail: native systemd drop-in memory cgroup provider
+
 action :add do
-  begin
-    check_cgroups = new_resource.check_cgroups
+  # Main systemd root slice
+  systemd_unit 'redborder.slice' do
+    content(
+      'Slice' => {
+        'Description' => 'redBorder Core Slice'
+      }
+    )
+    action [:create, :enable]
+  end
 
-    execute 'load_cgroups' do
-      command '/usr/lib/redborder/bin/rb_configure_cgroups.sh'
-      action :nothing
-    end
+  memory_services = node['redborder']['memory_services'] || {}
+  systemdservices_map = node['redborder']['systemdservices'] || {}
+  active_units = []
 
-    dnf_package 'redborder-cgroups' do
-      action :upgrade
-    end
+  memory_services.each do |srv_key, data|
+    mem_kb = data['memory'].to_i
+    next if mem_kb <= 0
 
-    template '/etc/cgroup.conf' do
-      source 'cgroup.conf.erb'
-      owner 'root'
-      group 'root'
-      mode '0644'
-      cookbook 'rbcgroup'
-      mode '600'
-      retries 2
-      notifies :run, 'execute[load_cgroups]', :delayed if check_cgroups
-    end
+    # Map service keys to actual systemd unit names (e.g., chef-server -> opscode-erchef)
+    units = Array(systemdservices_map[srv_key] || srv_key)
 
-    if check_cgroups
-      # Executed on chef-client
-      ruby_block 'Checkupdate_cgroups' do
-        # Check if active memservices have cgroups assigned and fix all if any
-        block do
-          # Run the check script and capture the exit status
-          system('/usr/lib/redborder/scripts/rb_check_cgroups.rb')
-          exit_status = $CHILD_STATUS.exitstatus
+    units.each do |unit_name|
+      active_units << unit_name
 
-          # Check if the exit status is 1; if true, run the configuration script
-          if exit_status == 1
-            system('/usr/lib/redborder/bin/rb_configure_cgroups.sh')
-          end
-        end
+      directory "/etc/systemd/system/#{unit_name}.service.d" do
+        mode '0755'
+        recursive true
+      end
+
+      service unit_name do
+        action :nothing
+      end
+
+      # Memory cgroup drop-in override
+      systemd_unit "#{unit_name}.service.d/10-cgroups.conf" do
+        content(
+          'Service' => {
+            'Slice' => "redborder-#{unit_name.delete('-')}.slice",
+            'MemoryHigh' => "#{mem_kb}K",
+            'MemoryMax' => (data['max_limit'].to_i > 0) ? "#{data['max_limit']}K" : nil
+          }.compact
+        )
+        action :create
+        verify false
+        triggers_reload true
+        notifies :restart, "service[#{unit_name}]", :delayed if new_resource.check_cgroups
       end
     end
+  end
 
-    Chef::Log.info('cookbook redborder-cgroup has been processed.')
-  rescue => e
-    Chef::Log.error(e.message)
+  # Remove obsolete drop-ins for inactive services
+  Dir.glob('/etc/systemd/system/*.service.d/10-cgroups.conf').each do |path|
+    unit_name = ::File.basename(::File.dirname(path)).chomp('.service.d')
+    next if active_units.include?(unit_name)
+
+    systemd_unit "#{unit_name}.service.d/10-cgroups.conf" do
+      action :delete
+      verify false
+      triggers_reload true
+    end
   end
 end
