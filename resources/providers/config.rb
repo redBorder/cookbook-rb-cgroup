@@ -2,12 +2,9 @@
 # Provider:: config
 
 action :add do
+  # Main systemd root slice
   systemd_unit 'redborder.slice' do
-    content(
-      'Slice' => {
-        'Description' => 'redBorder Core Slice',
-      }
-    )
+    content('Slice' => { 'Description' => 'redBorder Core Slice' })
     action [:create, :enable]
   end
 
@@ -30,10 +27,6 @@ action :add do
         recursive true
       end
 
-      service unit_name do
-        action :nothing
-      end
-
       systemd_unit "#{unit_name}.service.d/10-cgroups.conf" do
         content(
           'Service' => {
@@ -49,15 +42,18 @@ action :add do
     end
   end
 
-  # Remove obsolete drop-ins for inactive services
-  Dir.glob('/etc/systemd/system/*.service.d/10-cgroups.conf').each do |path|
-    unit_name = ::File.basename(::File.dirname(path)).chomp('.service.d')
-    next if active_units.include?(unit_name)
+  # Prune obsolete drop-ins for inactive services at converge time
+  ruby_block 'prune_obsolete_cgroup_overrides' do
+    block do
+      Dir.glob('/etc/systemd/system/*.service.d/10-cgroups.conf').each do |path|
+        unit_name = ::File.basename(::File.dirname(path)).chomp('.service.d')
+        next if active_units.include?(unit_name)
 
-    systemd_unit "#{unit_name}.service.d/10-cgroups.conf" do
-      action :delete
-      verify false
-      triggers_reload true
+        Chef::Log.info("rbcgroup: Pruning obsolete drop-in override for '#{unit_name}'")
+        ::File.delete(path) if ::File.exist?(path)
+        system('systemctl daemon-reload')
+      end
     end
+    action :run
   end
 end
