@@ -45,7 +45,6 @@ action :add do
         action :create
         verify false
         triggers_reload true
-        notifies :restart, "service[#{unit_name}]", :delayed if new_resource.check_cgroups
       end
     end
   end
