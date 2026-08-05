@@ -1,6 +1,11 @@
 cookbook-rb-cgroup CHANGELOG
 ===============
 
+## 2.0.0
+
+  - Nils
+    - [6e5e1d5] reimplement cgroupsv2 with systemd
+
 ## 1.0.0
 
   - Miguel Negrón
