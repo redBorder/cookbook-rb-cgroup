@@ -33,9 +33,9 @@ action :add do
         # I seems we are doing a mapping that should already exists in the node attributes, so the node should use the keys defined by us, not creating an extra map.
         # Idk if this affects to something else, but at least we should allow every cgroup/memory attribute with the same.
         # Latter in the attributes, be can redirect to cgroupsv2 documentation what is each attribute
-        content( 
+        content(
           'Service' => {
-            'Slice' => "redborder-#{unit_name.delete('-')}.slice",  # This is ok
+            'Slice' => "redborder-#{unit_name.delete('-')}.slice",
             'MemoryHigh' => "#{data['memory'].to_i}K",
             'MemoryMax' => (data['max_limit'].to_i > 0) ? "#{data['max_limit']}K" : nil,
           }.compact
@@ -56,7 +56,7 @@ action :add do
 
         Chef::Log.info("rbcgroup: Pruning obsolete drop-in override for '#{unit_name}'")
         ::File.delete(path) if ::File.exist?(path)
-        system('systemctl daemon-reload') # Is necessary to restart on each service? And why not using notifies run instead? 
+        system('systemctl daemon-reload')
       end
     end
     action :run
