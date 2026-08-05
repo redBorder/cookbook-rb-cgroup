@@ -1,9 +1,9 @@
-unified_mode true
-
 # Cookbook:: rbcgroup
 # Resource:: config
+
+unified_mode true
 
 actions :add
 default_action :add
 
-attribute :check_cgroups, kind_of: [TrueClass, FalseClass], default: true
+property :check_cgroups, [true, false], default: true
