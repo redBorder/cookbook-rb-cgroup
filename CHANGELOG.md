@@ -1,6 +1,11 @@
 cookbook-rb-cgroup CHANGELOG
 ===============
 
+## 2.0.1
+
+  - manegron
+    - [b1bd213] Upload cookbook only if opscode-erchef is active
+
 ## 2.0.0
 
   - Nils
